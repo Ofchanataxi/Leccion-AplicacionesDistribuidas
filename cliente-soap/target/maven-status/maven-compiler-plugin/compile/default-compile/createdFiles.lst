@@ -1,0 +1,4 @@
+espe\edu\soap\config\CxfConfig.class
+espe\edu\soap\service\ClienteSoapService.class
+espe\edu\soap\service\ClienteSoapServiceImpl.class
+espe\edu\soap\SoapApplication.class

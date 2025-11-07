@@ -1,0 +1,4 @@
+espe\edu\common\db\DataSourceFactory.class
+espe\edu\common\model\Cliente.class
+espe\edu\common\App.class
+espe\edu\common\dao\ClienteDAO.class
