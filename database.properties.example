@@ -1,0 +1,13 @@
+# Configuración de ejemplo para conectar a PostgreSQL
+# Descomentar y modificar estas líneas en application.properties de cada módulo si deseas usar base de datos real
+
+# spring.datasource.url=jdbc:postgresql://localhost:5432/clientes_db
+# spring.datasource.username=postgres
+# spring.datasource.password=password
+# spring.datasource.driver-class-name=org.postgresql.Driver
+
+# HikariCP settings
+# spring.datasource.hikari.maximum-pool-size=10
+# spring.datasource.hikari.minimum-idle=5
+# spring.datasource.hikari.connection-timeout=30000
+

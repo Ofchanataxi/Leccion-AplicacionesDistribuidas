@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente WebSocket - Gestión de Clientes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .status.connected {
+            background: #10b981;
+        }
+
+        .status.disconnected {
+            background: #ef4444;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .connection-panel {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .operations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .operation-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .operation-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .response-panel {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .response-panel h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .response-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #374151;
+            border-radius: 5px;
+            border-left: 3px solid #10b981;
+        }
+
+        .response-item.error {
+            border-left-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .timestamp {
+            color: #9ca3af;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Cliente WebSocket</h1>
+            <p>Gestión de Clientes en Tiempo Real</p>
+            <div class="status disconnected" id="status">● Desconectado</div>
+        </div>
+
+        <div class="content">
+            <!-- Panel de Conexión -->
+            <div class="connection-panel">
+                <h3>Conexión WebSocket</h3>
+                <p><strong>URL:</strong> ws://localhost:8083/ws-clientes</p>
+                <button class="btn btn-primary" onclick="connect()">🔌 Conectar</button>
+                <button class="btn btn-danger" onclick="disconnect()">🔌 Desconectar</button>
+            </div>
+
+            <!-- Operaciones -->
+            <div class="operations">
+                <!-- Crear Cliente -->
+                <div class="operation-card">
+                    <h3>➕ Crear Cliente</h3>
+                    <div class="form-group">
+                        <label>Cédula:</label>
+                        <input type="text" id="create-cedula" placeholder="1234567890">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" id="create-nombre" placeholder="Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="text" id="create-telefono" placeholder="0987654321">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="create-email" placeholder="juan@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección:</label>
+                        <input type="text" id="create-direccion" placeholder="Av. Principal 123">
+                    </div>
+                    <button class="btn btn-success" onclick="crearCliente()">Crear</button>
+                </div>
+
+                <!-- Obtener Cliente -->
+                <div class="operation-card">
+                    <h3>🔍 Obtener Cliente</h3>
+                    <div class="form-group">
+                        <label>ID del Cliente:</label>
+                        <input type="number" id="read-id" placeholder="1">
+                    </div>
+                    <button class="btn btn-success" onclick="obtenerCliente()">Buscar</button>
+                </div>
+
+                <!-- Listar Clientes -->
+                <div class="operation-card">
+                    <h3>📋 Listar Clientes</h3>
+                    <p>Obtiene todos los clientes registrados</p>
+                    <button class="btn btn-success" onclick="listarClientes()">Listar Todos</button>
+                </div>
+
+                <!-- Actualizar Cliente -->
+                <div class="operation-card">
+                    <h3>✏️ Actualizar Cliente</h3>
+                    <div class="form-group">
+                        <label>ID del Cliente:</label>
+                        <input type="number" id="update-id" placeholder="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Cédula:</label>
+                        <input type="text" id="update-cedula" placeholder="1234567890">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" id="update-nombre" placeholder="Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="text" id="update-telefono" placeholder="0987654321">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="update-email" placeholder="juan@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección:</label>
+                        <input type="text" id="update-direccion" placeholder="Av. Principal 123">
+                    </div>
+                    <button class="btn btn-success" onclick="actualizarCliente()">Actualizar</button>
+                </div>
+
+                <!-- Eliminar Cliente -->
+                <div class="operation-card">
+                    <h3>🗑️ Eliminar Cliente</h3>
+                    <div class="form-group">
+                        <label>ID del Cliente:</label>
+                        <input type="number" id="delete-id" placeholder="1">
+                    </div>
+                    <button class="btn btn-danger" onclick="eliminarCliente()">Eliminar</button>
+                </div>
+            </div>
+
+            <!-- Panel de Respuestas -->
+            <div class="response-panel">
+                <h3>📡 Respuestas del Servidor</h3>
+                <div id="responses"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script>
+        let stompClient = null;
+
+        function connect() {
+            const socket = new SockJS('http://localhost:8083/ws-clientes');
+            stompClient = Stomp.over(socket);
+
+            stompClient.connect({}, function(frame) {
+                console.log('Conectado: ' + frame);
+                updateStatus(true);
+                addResponse('success', '✓ Conectado al servidor WebSocket');
+
+                stompClient.subscribe('/topic/cliente', function(response) {
+                    const data = JSON.parse(response.body);
+                    showResponse(data);
+                });
+            }, function(error) {
+                updateStatus(false);
+                addResponse('error', '✗ Error de conexión: ' + error);
+            });
+        }
+
+        function disconnect() {
+            if (stompClient !== null) {
+                stompClient.disconnect();
+                updateStatus(false);
+                addResponse('success', '✓ Desconectado del servidor');
+            }
+        }
+
+        function updateStatus(connected) {
+            const statusEl = document.getElementById('status');
+            if (connected) {
+                statusEl.className = 'status connected';
+                statusEl.textContent = '● Conectado';
+            } else {
+                statusEl.className = 'status disconnected';
+                statusEl.textContent = '● Desconectado';
+            }
+        }
+
+        function sendMessage(action, cliente) {
+            if (stompClient === null || !stompClient.connected) {
+                addResponse('error', '✗ No hay conexión WebSocket activa');
+                return;
+            }
+
+            const message = {
+                action: action,
+                cliente: cliente
+            };
+
+            stompClient.send("/app/cliente", {}, JSON.stringify(message));
+            addResponse('success', `→ Enviando acción: ${action}`);
+        }
+
+        function crearCliente() {
+            const cliente = {
+                cedula: document.getElementById('create-cedula').value,
+                nombre: document.getElementById('create-nombre').value,
+                telefono: document.getElementById('create-telefono').value,
+                email: document.getElementById('create-email').value,
+                direccion: document.getElementById('create-direccion').value
+            };
+            sendMessage('CREATE', cliente);
+        }
+
+        function obtenerCliente() {
+            const cliente = {
+                idCliente: parseInt(document.getElementById('read-id').value)
+            };
+            sendMessage('READ', cliente);
+        }
+
+        function listarClientes() {
+            sendMessage('LIST', {});
+        }
+
+        function actualizarCliente() {
+            const cliente = {
+                idCliente: parseInt(document.getElementById('update-id').value),
+                cedula: document.getElementById('update-cedula').value,
+                nombre: document.getElementById('update-nombre').value,
+                telefono: document.getElementById('update-telefono').value,
+                email: document.getElementById('update-email').value,
+                direccion: document.getElementById('update-direccion').value
+            };
+            sendMessage('UPDATE', cliente);
+        }
+
+        function eliminarCliente() {
+            const cliente = {
+                idCliente: parseInt(document.getElementById('delete-id').value)
+            };
+            sendMessage('DELETE', cliente);
+        }
+
+        function showResponse(data) {
+            let message = `<strong>Mensaje:</strong> ${data.message}<br>`;
+
+            if (data.cliente) {
+                message += `<strong>Cliente:</strong><br>`;
+                message += `ID: ${data.cliente.idCliente}<br>`;
+                message += `Nombre: ${data.cliente.nombre}<br>`;
+                message += `Email: ${data.cliente.email}<br>`;
+            }
+
+            if (data.clientes && data.clientes.length > 0) {
+                message += `<strong>Clientes (${data.clientes.length}):</strong><br>`;
+                data.clientes.forEach(c => {
+                    message += `• ${c.nombre} (ID: ${c.idCliente})<br>`;
+                });
+            }
+
+            addResponse(data.success ? 'success' : 'error', message);
+        }
+
+        function addResponse(type, message) {
+            const responsesDiv = document.getElementById('responses');
+            const responseItem = document.createElement('div');
+            responseItem.className = 'response-item' + (type === 'error' ? ' error' : '');
+
+            const timestamp = new Date().toLocaleTimeString();
+            responseItem.innerHTML = `
+                <div class="timestamp">[${timestamp}]</div>
+                <div>${message}</div>
+            `;
+
+            responsesDiv.insertBefore(responseItem, responsesDiv.firstChild);
+        }
+    </script>
+</body>
+</html>
+

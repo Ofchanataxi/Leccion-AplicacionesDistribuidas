@@ -4,15 +4,71 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8872e0f8-47b8-4837-9cd5-19480713d92b" name="Changes" comment="" />
+    <list default="true" id="8872e0f8-47b8-4837-9cd5-19480713d92b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/COMO-EJECUTAR.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EXAMPLES.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PROJECT_COMPLETE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QUICKSTART.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-rpc/src/main/java/espe/edu/rpc/RpcApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-rpc/src/main/java/espe/edu/rpc/config/GrpcServerStarter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-rpc/src/main/java/espe/edu/rpc/service/ClienteGrpcServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-rpc/src/main/proto/cliente.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-rpc/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/WebSocketApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/config/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/controller/ClienteWebSocketController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/model/ClienteData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/model/ClienteMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/model/ClienteResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cliente-socket/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database.properties.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run-client.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/espe/edu/clientes/ClienteApiTestMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/espe/edu/clientes/GrpcClienteConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/espe/edu/clientes/SoapClienteConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/espe/edu/clientes/WebSocketClienteConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start-grpc.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start-soap.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start-websocket.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-common/target/cliente-common-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-common/target/cliente-common-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/src/main/java/espe/edu/rpc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/src/main/java/espe/edu/rpc/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/classes/espe/edu/rpc/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/classes/espe/edu/rpc/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/cliente-rpc-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/cliente-rpc-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/surefire-reports/TEST-espe.edu.rpc.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/surefire-reports/TEST-espe.edu.rpc.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/surefire-reports/espe.edu.rpc.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/surefire-reports/espe.edu.rpc.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-rpc/target/test-classes/espe/edu/rpc/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-rpc/target/test-classes/espe/edu/rpc/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-soap/target/cliente-soap-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-soap/target/cliente-soap-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-soap/target/cliente-soap-1.0.0.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-soap/target/cliente-soap-1.0.0.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/src/main/java/espe/edu/socket/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/classes/espe/edu/socket/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/classes/espe/edu/socket/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/cliente-socket-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/cliente-socket-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/surefire-reports/TEST-espe.edu.socket.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/surefire-reports/TEST-espe.edu.socket.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/surefire-reports/espe.edu.socket.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/surefire-reports/espe.edu.socket.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cliente-socket/target/test-classes/espe/edu/socket/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/cliente-socket/target/test-classes/espe/edu/socket/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="35AYxuQcJDE0RcH8uBub0n4iBsB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,6 +78,9 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/ofcha/OneDrive/Desktop/Universidad/Septimo/AplicacionesDistribuidas/clientes-distribuidos",
     "node.js.detected.package.eslint": "true",
@@ -32,6 +91,19 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="clientes-distribuidos" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="clientes-distribuidos" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -47,7 +119,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1762554592591</updated>
-      <workItem from="1762554593723" duration="3895000" />
+      <workItem from="1762554593723" duration="5466000" />
+      <workItem from="1762959462131" duration="17000" />
     </task>
     <servers />
   </component>

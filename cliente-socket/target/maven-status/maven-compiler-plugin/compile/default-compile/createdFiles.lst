@@ -1,1 +1,7 @@
+espe\edu\socket\WebSocketApplication.class
 espe\edu\socket\App.class
+espe\edu\socket\model\ClienteData.class
+espe\edu\socket\controller\ClienteWebSocketController.class
+espe\edu\socket\model\ClienteResponse.class
+espe\edu\socket\config\WebSocketConfig.class
+espe\edu\socket\model\ClienteMessage.class

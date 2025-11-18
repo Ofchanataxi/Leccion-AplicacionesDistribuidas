@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "espe.edu.rpc.grpc";
+option java_outer_classname = "ClienteProto";
+
+package cliente;
+
+service ClienteService {
+  rpc CrearCliente(ClienteRequest) returns (ClienteResponse);
+  rpc ObtenerCliente(ClienteIdRequest) returns (ClienteResponse);
+  rpc ListarClientes(Empty) returns (ClienteListResponse);
+  rpc ActualizarCliente(ClienteRequest) returns (BoolResponse);
+  rpc EliminarCliente(ClienteIdRequest) returns (BoolResponse);
+}
+
+message ClienteRequest {
+  int32 idCliente = 1;
+  string cedula = 2;
+  string nombre = 3;
+  string telefono = 4;
+  string email = 5;
+  string direccion = 6;
+  string fechaRegistro = 7;
+}
+
+message ClienteResponse {
+  int32 idCliente = 1;
+  string cedula = 2;
+  string nombre = 3;
+  string telefono = 4;
+  string email = 5;
+  string direccion = 6;
+  string fechaRegistro = 7;
+}
+
+message ClienteIdRequest {
+  int32 idCliente = 1;
+}
+
+message ClienteListResponse {
+  repeated ClienteResponse clientes = 1;
+}
+
+message BoolResponse {
+  bool success = 1;
+}
+
+message Empty {}
+

@@ -1,13 +1,15 @@
 package espe.edu.socket;
 
 /**
- * Hello world!
- *
+ * Clase obsoleta - Usar WebSocketApplication.java para iniciar el servidor WebSocket
+ * @deprecated
  */
-public class App 
+@Deprecated
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println("Esta clase está obsoleta.");
+        System.out.println("Usa WebSocketApplication.java para iniciar el servidor WebSocket");
     }
 }
